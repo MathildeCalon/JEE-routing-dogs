@@ -1,4 +1,4 @@
-package org.example.jstl_dog;
+package org.example.jstl_dog.controller;
 
 import java.io.*;
 import jakarta.servlet.http.*;

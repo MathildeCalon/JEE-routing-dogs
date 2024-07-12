@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="dogs" type="java.util.ArrayList<org.example.jstl_dog.Dog>" scope="request"/>
+<jsp:useBean id="dogs" type="java.util.ArrayList<org.example.jstl_dog.entity.Dog>" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,7 +25,7 @@
                     <td>${dog.name}</td>
                     <td>${dog.breed}</td>
                     <td>${dog.dateOfBirth}</td>
-                    <td><a href="dog/${dog.id-1}"><button>Information</button>
+                    <td><a href="dog/${dog.id}"><button>Information</button>
                     </a></td>
                 </tr>
 

@@ -1,23 +1,25 @@
-package org.example.jstl_dog;
+package org.example.jstl_dog.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.jstl_dog.entity.Dog;
+import org.example.jstl_dog.repository.DogRepository;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/dog/*")
 public class ServletDog extends HttpServlet {
-    List<Dog> dogs = new ArrayList<>();
+    DogRepository dogRepository;
 
     @Override
     public void init() throws ServletException {
         System.out.println("Serveur lancé");
+        dogRepository = new DogRepository();
     }
 
     @Override
@@ -26,6 +28,7 @@ public class ServletDog extends HttpServlet {
 
         switch (pathInfo) {
             case "":
+                List<Dog> dogs = dogRepository.findAll();
                 req.setAttribute("dogs", dogs);
                 req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
                 break;
@@ -34,8 +37,7 @@ public class ServletDog extends HttpServlet {
                 break;
             default:
                 int searchedDog = Integer.parseInt(pathInfo.substring(1));
-                Dog dog = dogs.get(searchedDog);
-                System.out.println(req.getParameter("id"));
+                Dog dog = dogRepository.findById(searchedDog);
                 req.setAttribute("dog", dog);
                 req.getRequestDispatcher("/dog.jsp").forward(req, resp);
         }
@@ -49,9 +51,13 @@ public class ServletDog extends HttpServlet {
 
                 System.out.println(name + " " + breed + " " + dob);
 
-                dogs.add(new Dog(name, breed, dob));
-                System.out.println("liste de chien" + dogs);
+                dogRepository.create(Dog.builder()
+                        .name(name)
+                        .breed(breed)
+                        .dateOfBirth(dob)
+                        .build());
 
+                List<Dog> dogs = dogRepository.findAll();
                 req.setAttribute("dogs", dogs);
                 req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
     }

@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="dog" type="org.example.jstl_dog.Dog" scope="request"/>
+<jsp:useBean id="dog" type="org.example.jstl_dog.entity.Dog" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
