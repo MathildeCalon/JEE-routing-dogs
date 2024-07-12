@@ -43,16 +43,16 @@ public class ServletDog extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pathInfo = ((req.getPathInfo() == null || req.getPathInfo().isEmpty()) ? "" : req.getPathInfo());
-        switch (pathInfo) {
-            case "":
                 String name = req.getParameter("name");
                 String breed = req.getParameter("breed");
                 LocalDate dob = LocalDate.parse(req.getParameter("dob"));
 
-                dogs.add(new Dog(name, breed, dob));
+                System.out.println(name + " " + breed + " " + dob);
 
-                resp.sendRedirect("");
-        }
+                dogs.add(new Dog(name, breed, dob));
+                System.out.println("liste de chien" + dogs);
+
+                req.setAttribute("dogs", dogs);
+                req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
     }
 }
