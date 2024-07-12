@@ -35,8 +35,8 @@ public class ServletDog extends HttpServlet {
             case "/add":
                 req.getRequestDispatcher("/addDog.jsp").forward(req, resp);
                 break;
-            default:
-                int searchedDog = Integer.parseInt(pathInfo.substring(1));
+            case "/detail":
+                int searchedDog = Integer.parseInt(req.getParameter("id"));
                 Dog dog = dogRepository.findById(searchedDog);
                 req.setAttribute("dog", dog);
                 req.getRequestDispatcher("/dog.jsp").forward(req, resp);

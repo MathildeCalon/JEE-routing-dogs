@@ -31,7 +31,7 @@
         </div>
 
     </form>
-    <a href="dog"><button>Return</button></a>
+    <a href="${pageContext.request.contextPath}/dog"><button>Return</button></a>
 </main>
 </body>
 </html>

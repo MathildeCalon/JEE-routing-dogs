@@ -25,7 +25,7 @@
                     <td>${dog.name}</td>
                     <td>${dog.breed}</td>
                     <td>${dog.dateOfBirth}</td>
-                    <td><a href="dog/${dog.id}"><button>Information</button>
+                    <td><a href="${pageContext.request.contextPath}/dog/detail?id=${dog.id}"><button>Information</button>
                     </a></td>
                 </tr>
 
