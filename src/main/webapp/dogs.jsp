@@ -3,29 +3,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="WEB-INF/bootstrap.html"%>
     <title>Dogs</title>
 </head>
 <body>
-<h1>List of dogs</h1>
+
+<div class="container bg-dark text-white pb-2 rounded">
+<h1  class="display-1">- Dogs list -</h1>
+
 <c:choose>
     <c:when test="${dogs.size()>0}">
-        <table>
+        <table class="table">
             <thead>
-            <th>#</th>
-            <th>Name</th>
-            <th>Breed</th>
-            <th>Date of birth</th>
-            <th></th>
+                <th class="bg-dark text-white">#</th>
+                <th class="bg-dark text-white">Name</th>
+                <th class="bg-dark text-white">Breed</th>
+                <th class="bg-dark text-white">Date of birth</th>
+                <th class="bg-dark text-white"></th>
             </thead>
             <tbody>
             <c:forEach var="dog" items="${dogs}">
 
                 <tr>
-                    <td>${dog.id}</td>
-                    <td>${dog.name}</td>
-                    <td>${dog.breed}</td>
-                    <td>${dog.dateOfBirth}</td>
-                    <td><a href="${pageContext.request.contextPath}/dog/detail?id=${dog.id}"><button>Information</button>
+                    <td class="bg-dark text-white">${dog.id}</td>
+                    <td class="bg-dark text-white">${dog.name}</td>
+                    <td class="bg-dark text-white">${dog.breed}</td>
+                    <td class="bg-dark text-white">${dog.dateOfBirth}</td>
+                    <td class="bg-dark text-white"><a href="${pageContext.request.contextPath}/dog/detail?id=${dog.id}"><button class="btn btn-outline-info">Details</button>
                     </a></td>
                 </tr>
 
@@ -38,7 +42,9 @@
     </c:otherwise>
 </c:choose>
 
-<a href="dog/add"><button>+ Add a dog</button></a>
-
+    <div class="d-flex flex-row-reverse">
+        <a href="dog/add"><button class="btn btn-outline-success">+ Add a dog</button></a>
+    </div>
+</div>
 </body>
 </html>

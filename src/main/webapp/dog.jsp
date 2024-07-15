@@ -3,11 +3,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="WEB-INF/bootstrap.html"%>
     <title>Informations</title>
 </head>
 <body>
 <main>
-    <h1>Dog information</h1>
+    <h1  class="display-1">Dog information</h1>
     <form>
         <div>
             <label for="id"> # </label>

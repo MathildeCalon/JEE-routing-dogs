@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="WEB-INF/bootstrap.html"%>
     <title>Add a dog</title>
 </head>
 <body>
-<h1>Add a dog:</h1>
+<h1  class="display-1">Add a dog:</h1>
 <form action="dog" method="post">
     <div>
     <label for="name">

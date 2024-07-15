@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%@include file="WEB-INF/bootstrap.html"%>
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+
+<h1  class="display-1" >Contents</h1>
 <ul>
   <li>
     <a href="dog">List of dogs</a>
