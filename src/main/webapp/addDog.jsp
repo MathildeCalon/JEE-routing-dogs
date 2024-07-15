@@ -36,6 +36,7 @@
             </label>
             <input name="dob" id="dob" type="date" class="form-control">
         </div>
+
         <div class="d-flex flex-row-reverse mt-2">
             <button type="submit" class="btn btn-outline-success">+ Add a dog</button>
         </div>

@@ -45,4 +45,20 @@ public class DogRepository {
             session.close();
             return dogs;
         }
+
+        public String delete (int id) {
+            try {
+                session = sessionFactory.openSession();
+                session.beginTransaction();
+                Dog dog = session.get(Dog.class, id);
+                session.delete(dog);
+                session.getTransaction().commit();
+                return "Dog deleted";
+            } catch (Exception e) {
+                session.getTransaction().rollback();
+                return null;
+            } finally {
+                session.close();
+            }
+        }
 }

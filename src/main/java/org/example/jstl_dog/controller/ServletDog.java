@@ -28,9 +28,7 @@ public class ServletDog extends HttpServlet {
 
         switch (pathInfo) {
             case "":
-                List<Dog> dogs = dogRepository.findAll();
-                req.setAttribute("dogs", dogs);
-                req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
+                sendDogList(req, resp);
                 break;
             case "/add":
                 req.getRequestDispatcher("/addDog.jsp").forward(req, resp);
@@ -45,20 +43,35 @@ public class ServletDog extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                String name = req.getParameter("name");
-                String breed = req.getParameter("breed");
-                LocalDate dob = LocalDate.parse(req.getParameter("dob"));
+        String pathInfo = ((req.getPathInfo() == null || req.getPathInfo().isEmpty()) ? "" : req.getPathInfo());
+        switch (pathInfo) {
+            case "":
+            String name = req.getParameter("name");
+            String breed = req.getParameter("breed");
+            LocalDate dob = LocalDate.parse(req.getParameter("dob"));
 
-                System.out.println(name + " " + breed + " " + dob);
+            System.out.println(name + " " + breed + " " + dob);
 
-                dogRepository.create(Dog.builder()
-                        .name(name)
-                        .breed(breed)
-                        .dateOfBirth(dob)
-                        .build());
+            dogRepository.create(Dog.builder()
+                    .name(name)
+                    .breed(breed)
+                    .dateOfBirth(dob)
+                    .build());
 
-                List<Dog> dogs = dogRepository.findAll();
-                req.setAttribute("dogs", dogs);
-                req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
+                sendDogList(req, resp);
+            break;
+
+            case "/delete":
+                int searchedDog = Integer.parseInt(req.getParameter("id"));
+                dogRepository.delete(searchedDog);
+
+                sendDogList(req, resp);
+        }
+    }
+
+    public void sendDogList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        List<Dog> dogs = dogRepository.findAll();
+        req.setAttribute("dogs", dogs);
+        req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
     }
 }

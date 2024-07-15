@@ -29,7 +29,8 @@
                     <td class="bg-dark text-white">${dog.name}</td>
                     <td class="bg-dark text-white">${dog.breed}</td>
                     <td class="bg-dark text-white">${dog.dateOfBirth}</td>
-                    <td class="bg-dark text-white"><a href="${pageContext.request.contextPath}/dog/detail?id=${dog.id}"><button class="btn btn-outline-info">Details</button>
+                    <td class="bg-dark text-white"><a href="${pageContext.request.contextPath}/dog/detail?id=${dog.id}">
+                        <button class="btn btn-outline-info">Details</button>
                     </a></td>
                 </tr>
 
@@ -43,7 +44,8 @@
 </c:choose>
 
     <div class="d-flex flex-row-reverse">
-        <a href="dog/add"><button class="btn btn-outline-success">+ Add a dog</button></a>
+        <a href="${pageContext.request.contextPath}/dog/add">
+            <button class="btn btn-outline-success">+ Add a dog</button></a>
     </div>
 </div>
 </body>
