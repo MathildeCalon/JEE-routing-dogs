@@ -8,33 +8,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="WEB-INF/bootstrap.html"%>
+    <%@include file="WEB-INF/bootstrap.html" %>
     <title>Add a dog</title>
 </head>
+
 <body>
-<h1  class="display-1">Add a dog:</h1>
-<form action="dog" method="post">
-    <div>
-    <label for="name">
-        Dog name :
-    </label>
-    <input name="name" id="name" type="text">
-    </div>
+<div class="container bg-dark text-white pb-2 rounded">
+    <h1 class="display-1">- Add a dog -</h1>
+    <form action="dog" method="post">
+        <div class="form-group">
+            <label for="name">
+                Name :
+            </label>
+            <input name="name" id="name" type="text" class="form-control">
+        </div>
 
-    <div>
-    <label for="breed">
-        Dog breed :
-    </label>
-    <input name="breed" id="breed" type="text">
-    </div>
+        <div class="form-group">
+            <label for="breed">
+                Breed :
+            </label>
+            <input name="breed" id="breed" type="text" class="form-control">
+        </div>
 
-    <div>
-        <label for="dob">
-            Dog date of birth :
-        </label>
-        <input name="dob" id="dob" type="date">
-    </div>
-    <button type="submit">Add a dog</button>
-</form>
+        <div class="form-group">
+            <label for="dob">
+                Birth date :
+            </label>
+            <input name="dob" id="dob" type="date" class="form-control">
+        </div>
+        <div class="d-flex flex-row-reverse mt-2">
+            <button type="submit" class="btn btn-outline-success">+ Add a dog</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

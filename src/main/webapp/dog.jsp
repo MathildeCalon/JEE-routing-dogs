@@ -3,36 +3,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="WEB-INF/bootstrap.html"%>
+    <%@include file="WEB-INF/bootstrap.html" %>
     <title>Informations</title>
 </head>
 <body>
-<main>
-    <h1  class="display-1">Dog information</h1>
-    <form>
-        <div>
-            <label for="id"> # </label>
-            <input id="id" placeholder="<c:out value="${dog.id}"/>" readonly>
+
+    <div class="container bg-dark text-white pb-2 rounded">
+        <h1 class="display-1">- View a dog -</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" value="<c:out value="${dog.name}"/>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="breed">Breed </label>
+                <input class="form-control" id="breed" value="<c:out value="${dog.breed}"/>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of birth</label>
+                <input class="form-control" id="dob" value="<c:out value="${dog.dateOfBirth}"/>" readonly>
+            </div>
+
+        </form>
+        <div class="d-flex flex-row-reverse mt-2">
+            <a href="${pageContext.request.contextPath}/dog">
+                <button class="btn btn-outline-secondary">Return</button>
+            </a>
         </div>
+    </div>
 
-        <div>
-            <label for="name"> Name </label>
-            <input id="name" placeholder="<c:out value="${dog.name}"/>" readonly>
-        </div>
-
-        <div>
-            <label for="breed"> Breed </label>
-            <input id="breed" placeholder="<c:out value="${dog.breed}"/>" readonly>
-        </div>
-
-        <div>
-            <label for="dob"> Date of birth </label>
-            <input id="dob" placeholder="<c:out value="${dog.dateOfBirth}"/>" readonly>
-
-        </div>
-
-    </form>
-    <a href="${pageContext.request.contextPath}/dog"><button>Return</button></a>
-</main>
 </body>
 </html>
