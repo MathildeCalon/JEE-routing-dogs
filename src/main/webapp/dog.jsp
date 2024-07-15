@@ -30,22 +30,23 @@
             <input class="form-control" name="dob" type="date" id="dob" value="<c:out value="${dog.dateOfBirth}"/>">
         </div>
 
-        <div class="d-flex flex-row-reverse mt-2">
-            <button type="submit" class="btn btn-outline-danger">Update a dog</button>
-        </div>
-    </form>
+        <form>
+            <div class="d-flex flex-row-reverse mt-2">
+                <button type="submit" class="btn btn-outline-danger">Update a dog</button>
+            </div>
+        </form>
 
-    <form action="${pageContext.request.contextPath}/dog/delete?id=${dog.id}" method="post">
-        <div class="d-flex flex-row-reverse mt-2">
-            <button type="submit" class="btn btn-outline-danger">Delete a dog</button>
-        </div>
-    </form>
+        <form action="${pageContext.request.contextPath}/dog/delete?id=${dog.id}" method="post">
+            <div class="d-flex flex-row-reverse mt-2">
+                <button type="submit" class="btn btn-outline-danger">Delete a dog</button>
+            </div>
+        </form>
 
-    <div class="d-flex flex-row-reverse mt-2">
-        <a href="${pageContext.request.contextPath}/dog">
-            <button class="btn btn-outline-secondary">Return</button>
-        </a>
-    </div>
+        <div class="d-flex flex-row-reverse mt-2">
+            <a href="${pageContext.request.contextPath}/dog">
+                <button class="btn btn-outline-secondary">Return</button>
+            </a>
+        </div>
 </div>
 
 </body>

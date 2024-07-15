@@ -45,23 +45,37 @@ public class ServletDog extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathInfo = ((req.getPathInfo() == null || req.getPathInfo().isEmpty()) ? "" : req.getPathInfo());
         switch (pathInfo) {
+            // POUR AJOUTER UN CHIEN
             case "":
-                Dog newDog = getParameters(req, resp);
+                String name = req.getParameter("name");
+                String breed = req.getParameter("breed");
+                LocalDate dob = LocalDate.parse(req.getParameter("dob"));
+                Dog newDog = Dog.builder()
+                        .name(name)
+                        .breed(breed)
+                        .dateOfBirth(dob)
+                        .build();
 
                 dogRepository.create(newDog);
 
                 sendDogList(req, resp);
                 break;
 
+            //POUR SUPPRIMER UN CHIEN
             case "/delete":
                 int searchedDog = Integer.parseInt(req.getParameter("id"));
                 dogRepository.delete(searchedDog);
 
                 sendDogList(req, resp);
                 break;
+
+            // POUR METTRE A JOUR UN CHIEN
             case "/update":
-                Dog updatedDog = getParameters(req, resp);
-                System.out.println("updated dog : " + updatedDog);
+                int id = Integer.parseInt(req.getParameter("id"));
+                String upName = req.getParameter("name");
+                String upBreed = req.getParameter("breed");
+                LocalDate upDob = LocalDate.parse(req.getParameter("dob"));
+                Dog updatedDog = new Dog(id, upName, upBreed, upDob);
                 dogRepository.update(updatedDog);
 
                 sendDogList(req, resp);
@@ -73,17 +87,5 @@ public class ServletDog extends HttpServlet {
         List<Dog> dogs = dogRepository.findAll();
         req.setAttribute("dogs", dogs);
         req.getRequestDispatcher("/dogs.jsp").forward(req, resp);
-    }
-
-    public Dog getParameters(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        String name = req.getParameter("name");
-        String breed = req.getParameter("breed");
-        LocalDate dob = LocalDate.parse(req.getParameter("dob"));
-
-        Dog dog = new Dog(id, name, breed, dob);
-        System.out.println("paremeters: "+  dog);
-
-        return dog;
     }
 };

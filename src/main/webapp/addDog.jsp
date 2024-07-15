@@ -15,7 +15,7 @@
 <body>
 <div class="container bg-dark text-white pb-2 rounded">
     <h1 class="display-1">- Add a dog -</h1>
-    <form action="dog" method="post">
+    <form action="${pageContext.request.contextPath}/dog" method="post">
         <div class="form-group">
             <label for="name">
                 Name :
