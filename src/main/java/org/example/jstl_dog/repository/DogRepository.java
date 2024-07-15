@@ -61,4 +61,19 @@ public class DogRepository {
                 session.close();
             }
         }
+
+        public Dog update (Dog dog){
+            try {
+                session = sessionFactory.openSession();
+                session.beginTransaction();
+                session.update(dog);
+                session.getTransaction().commit();
+                return dog;
+            } catch (Exception e) {
+                session.getTransaction().rollback();
+                return null;
+            } finally {
+                session.close();
+            }
+        }
 }
